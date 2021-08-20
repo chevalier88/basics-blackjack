@@ -1,4 +1,51 @@
+console.log("betting not required, pure gameplay");
+
 var main = function (input) {
-  var myOutputValue = 'hello world';
+  var myOutputValue = input + " llama";
+
+  if (input == "llama" || input == "1") {
+    console.log("the gods are displeased with your sacrilege");
+    console.log("a suitable sacrifice must be found to appease them");
+    myOutputValue = "the realms have shattered";
+  }
   return myOutputValue;
 };
+//   instantiate suits, ranks and values. JS calls lists arrays. dictionaries also possible.
+// JS treats "const" as global variables, much like Python constants.
+
+const suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
+const ranks = [
+  "Two",
+  "Three",
+  "Four",
+  "Five",
+  "Six",
+  "Seven",
+  "Eight",
+  "Nine",
+  "Ten",
+  "Jack",
+  "Queen",
+  "King",
+  "Ace",
+];
+const values = {
+  Two: 2,
+  Three: 3,
+  Four: 4,
+  Five: 5,
+  Six: 6,
+  Seven: 7,
+  Eight: 8,
+  Nine: 9,
+  Ten: 10,
+  Jack: 10,
+  Queen: 10,
+  King: 10,
+  Ace: 11,
+};
+
+console.log("printing poker card suits, ranks and values");
+console.log(suits);
+console.log(ranks);
+console.log(values);
