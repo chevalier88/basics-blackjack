@@ -3,6 +3,9 @@ console.log("betting not required, pure gameplay");
 //   instantiate suits, ranks and values. JS calls lists arrays. dictionaries also possible.
 // JS treats "const" as global variables, much like Python constants.
 
+//const is for primitive values that don't change
+//When we modify arrays and objects, the contents at their addresses may change, but the addresses and pointers themselves do not change, thus const is appropriate for var declarations (what does this mean??)
+
 const suits = ["Hearts", "Diamonds", "Spades", "Clubs"];
 const ranks = [
   "Two",
@@ -61,6 +64,8 @@ console.log(values);
 //        return deck
 
 //create empty array(list) representing the deck
+// note that "let" is better when it's only a number, string or boolean and we expect the value to be reassigned. deck will hold dictionaries so i'll keep it as var. 
+// however, let and const variables declared inside a block won't exist outside that block 
 var deck = [];
 
 //this function attempts to build a new deck of 52 cards - rather than attempting to manually write out each and every card in 52 dictionary keys - using nested for loops
@@ -101,30 +106,27 @@ function shuffler() {
   }
 }
 
-//there is no pop equivalent so this has to be created. In blackjack dealing goes like this:
-//player, dealer, player, & finally dealer again but card is face down. 
+//declaring Hand variables that will have empty lists
 var playerHand = [];
 var dealerHand = [];
 
-// function popCardDealing() {
-//   var firstCard = deck[0];
-//   delete deck[0];
-//   playerHand += firstCard;
-  
-//   var secondCard = deck[0];
-//   delete deck[0];
-//   dealerHand += secondCard;
+//we'll match up the card ranks with their values for the game-determining tallies
+const playerValue = 0;
+const dealerValue = 0;
 
-//   var thirdCard = deck[0];
-//   delete deck[0];
-//   playerHand += thirdCard;
-  
-//   var fourthCard = deck[0];
-//   delete deck[0];
-//   dealerHand += fourthCard;
+//there is no pop equivalent  unlike Python in JS so this has to be created. In blackjack dealing goes like this:
+//player, dealer, player, & finally dealer again but card is face down. 
+function deal() {
+  firstCard = deck[0];
+  deck.shift();
+  playerHand.push(firstCard);
 
-//   console.log(deck);
-// }
+  secondCard = deck[0];
+  deck.shift();
+  dealerHand.push(secondCard);
+
+  third;
+}
 
 deckCompiler();
 console.log("deck compiled. printing deck contents");
@@ -154,7 +156,7 @@ var main = function (input) {
     myOutputValue = "deck has been shuffled! Peeking at first card...";
     firstCardString = deck[0];
     console.log("the first card is: ", deck[0]);
-    // console.log(`The first card is ${firstCardString}`); //Javascript's equivalent of Python's f-string
+    // console.log(`The first card is ${firstCardString}`); //Javascript's equivalent of Python's f-string, known in JS as template literal - only works on single non-complex data types - not dictionaries
   }
 
   if (input == "deal cards") {
