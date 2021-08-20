@@ -35,6 +35,11 @@ const values = {
   Ace: 11,
 };
 
+console.log("printing poker card suits, ranks and values");
+console.log(suits);
+console.log(ranks);
+console.log(values);
+
 //attempting to create a Card "class" - with 2 attributes, suit and rank. it works, but i can't get my deck compiler to iterate class objects into a deck. So i stick with global functions and variables - and i quote out the Card class here.
 
 // function Card(suit, rank) {
@@ -55,7 +60,10 @@ const values = {
 //       deck.append(suit,rank)
 //        return deck
 
+//create empty array(list) representing the deck
 var deck = [];
+
+//this function attempts to build a new deck of 52 cards - rather than attempting to manually write out each and every card in 52 dictionary keys - using nested for loops
 
 function deckCompiler() {
   suits.forEach((suit) => {
@@ -64,34 +72,66 @@ function deckCompiler() {
     });
   });
 }
-
 //deck compiler works, we now have 52 cards
-// deckCompiler();
 
-console.log("printing poker card suits, ranks and values");
-console.log(suits);
-console.log(ranks);
-console.log(values);
-console.log(deck);
+//random integer function taken from this source: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  finalRandInt = Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+  return finalRandInt;
+}
+//swap 2 cards out with each other in their respective index positions
+function cardSwapper() {
+  //get 2 exclusive random integers from front and back halves of the deck
+  randomIndexFirst = getRandomIntInclusive(0, 25);
+  randomIndexSecond = getRandomIntInclusive(26, 51);
+  tempCard = deck[randomIndexFirst];
+  tempCard2 = deck[randomIndexSecond];
+  deck[randomIndexFirst] = tempCard2;
+  deck[randomIndexSecond] = tempCard;
+}
+
+//repeat this 52 times using Javascript's really ugly "for" loop
+function shuffler() {
+  for (var i = 0; i < 52; i++) {
+    cardSwapper();
+    console.log(deck);
+  }
+}
+
+//there is no pop equivalent 
+
+function deal(){
+  single_card = deck.
+}
+
+//this main function is what came with the Rocket Academy starter code. it reproduces output after submitting input in a webpage.
 var main = function (input) {
   var myOutputValue = input + " llama";
 
+  //messing around with OR keyword
   if (input == "llama" || input == "1") {
     console.log("the gods are displeased with your sacrilege");
     console.log("a suitable sacrifice must be found to appease them");
     myOutputValue = "the realms have shattered";
   }
 
-  if (input == "check") {
-    myOutputValue = deck;
+  //typing in this magic key phrase compiles a deck of 52 cards.
+  if (input == "summon deck") {
+    deckCompiler();
+    myOutputValue = "a new card deck was opened!";
+    console.log("deck compiled. printing deck contents");
+    console.log(deck);
   }
 
-  if (input == "open deck of cards") {
-    deckCompiler();
-    myOutputValue = deck;
-    console.log("printing deck contents");
-    console.log(deck);
+  if (input == "shuffle") {
+    shuffler();
+    myOutputValue = "deck has been shuffled! Peeking at first card...";
+    firstCardString = deck[0];
+    console.log("the first card is: ", deck[0]);
+    // console.log(`The first card is ${firstCardString}`); //Javascript's equivalent of Python's f-string
   }
 
   return myOutputValue;
