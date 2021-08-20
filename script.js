@@ -101,11 +101,34 @@ function shuffler() {
   }
 }
 
-//there is no pop equivalent 
+//there is no pop equivalent so this has to be created. In blackjack dealing goes like this:
+//player, dealer, player, & finally dealer again but card is face down. 
+var playerHand = [];
+var dealerHand = [];
 
-function deal(){
-  single_card = deck.
-}
+// function popCardDealing() {
+//   var firstCard = deck[0];
+//   delete deck[0];
+//   playerHand += firstCard;
+  
+//   var secondCard = deck[0];
+//   delete deck[0];
+//   dealerHand += secondCard;
+
+//   var thirdCard = deck[0];
+//   delete deck[0];
+//   playerHand += thirdCard;
+  
+//   var fourthCard = deck[0];
+//   delete deck[0];
+//   dealerHand += fourthCard;
+
+//   console.log(deck);
+// }
+
+deckCompiler();
+console.log("deck compiled. printing deck contents");
+console.log(deck);
 
 //this main function is what came with the Rocket Academy starter code. it reproduces output after submitting input in a webpage.
 var main = function (input) {
@@ -132,6 +155,11 @@ var main = function (input) {
     firstCardString = deck[0];
     console.log("the first card is: ", deck[0]);
     // console.log(`The first card is ${firstCardString}`); //Javascript's equivalent of Python's f-string
+  }
+
+  if (input == "deal cards") {
+    popCardDealing();
+    myOutputValue = "cards have been dealt!";
   }
 
   return myOutputValue;
