@@ -66,7 +66,7 @@ function deckCompiler() {
 }
 
 //deck compiler works, we now have 52 cards
-deckCompiler();
+// deckCompiler();
 
 console.log("printing poker card suits, ranks and values");
 console.log(suits);
@@ -86,5 +86,13 @@ var main = function (input) {
   if (input == "check") {
     myOutputValue = deck;
   }
+
+  if (input == "open deck of cards") {
+    deckCompiler();
+    myOutputValue = deck;
+    console.log("printing deck contents");
+    console.log(deck);
+  }
+
   return myOutputValue;
 };
