@@ -116,16 +116,20 @@ const dealerValue = 0;
 
 //there is no pop equivalent  unlike Python in JS so this has to be created. In blackjack dealing goes like this:
 //player, dealer, player, & finally dealer again but card is face down. 
-function deal() {
+function dealCards() {
   firstCard = deck[0];
-  deck.shift();
+  deck.shift(); 
   playerHand.push(firstCard);
 
-  secondCard = deck[0];
-  deck.shift();
+  //found a more efficient way to apply .shift
+  secondCard = deck.shift();
   dealerHand.push(secondCard);
 
-  third;
+  thirdCard = deck.shift();
+  playerHand.push(thirdCard);
+
+  fourthCard = deck.shift();
+  dealerHand.push(fourthCard);
 }
 
 deckCompiler();
@@ -160,9 +164,15 @@ var main = function (input) {
   }
 
   if (input == "deal cards") {
-    popCardDealing();
+    dealCards();
+    console.log(playerHand);
+    console.log(dealerHand);
     myOutputValue = "cards have been dealt!";
   }
 
   return myOutputValue;
 };
+// if (input == "see my hand") {
+//   let cardOne == playerHand[0].suit
+//   myOutputValue = `The first card is ${playerHand[0].suit}`;
+// };
